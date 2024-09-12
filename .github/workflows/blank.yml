@@ -1,22 +1,33 @@
-# This is a basic workflow to help you get started with Actions
+# هذا هو ملف تكوين أساسي لمساعدتك على بدء استخدام GitHub Actions
 name: CI
 
-# Controls when the workflow will run
+# يتحكم في وقت تشغيل الإجراءات
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-# Triggers the workflow on push or pull request events but only for the "main" branch
-# Allows you to run this workflow manually from the Actions tab
+# يسمح بتشغيل هذا الإجراء يدويًا من علامة تبويب الإجراءات
 workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# يتكون تشغيل الإجراء من وظيفة واحدة أو أكثر يمكن أن تعمل بالتسلسل أو بالتوازي
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    # نوع الخادم الذي سيتم تشغيل الوظيفة عليه
     runs-on: ubuntu-latest
 
-    # Steps represent a
+    # الخطوات التي تمثل تسلسل المهام التي سيتم تنفيذها كجزء من الوظيفة
+    steps:
+      # التحقق من مستودعك بحيث يمكن للوظيفة الوصول إليه
+      - uses: actions/checkout@v4
+
+      # تنفيذ أمر واحد باستخدام shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # تنفيذ مجموعة من الأوامر باستخدام shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
